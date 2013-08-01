@@ -1,4 +1,13 @@
 $(document).ready(function () {
+  $('form').on('submit', function(event){
+    event.preventDefault();
+
+    var roll = (Math.random() * 6) + 1;
+
+    $.post('/rolls', {'value' : roll}, function(data){
+      $('#die').html(data);
+    });
+  });
 
   // PSEUDO-CODE:
   //   1- intercept the form submission event using jQuery
